@@ -25,7 +25,8 @@ def download_video(request):
         'format': 'worstvideo[ext=mp4]+worstaudio[ext=m4a]',  # أسوأ جودة فيديو مع أفضل جودة صوت
         'outtmpl': f'/tmp/{task_id}.%(ext)s',  # المسار الذي يتم تنزيل الفيديو إليه
         'merge_output_format': 'mp4',  # تحويل الفيديو إلى تنسيق mp4
-        'progress_hooks': [lambda d: downloads.update({task_id: d})]  # تحديث حالة التنزيل
+        'progress_hooks': [lambda d: downloads.update({task_id: d})],  # تحديث حالة التنزيل
+        'cookiefile': '../cookies.txt',
     }
 
     downloads[task_id] = {'status': 'started', 'downloaded_bytes': 0, 'total_bytes': None, 'elapsed': 0}
