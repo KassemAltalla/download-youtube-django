@@ -26,7 +26,7 @@ def download_video(request):
         'outtmpl': f'/tmp/{task_id}.%(ext)s',  # المسار الذي يتم تنزيل الفيديو إليه
         'merge_output_format': 'mp4',  # تحويل الفيديو إلى تنسيق mp4
         'progress_hooks': [lambda d: downloads.update({task_id: d})],  # تحديث حالة التنزيل
-        'cookiefile': '../cookies.txt',
+        'cookiefile': os.path.join(os.path.dirname(__file__), 'cookies.txt'),  # مسار ملف cookies.txt
     }
 
     downloads[task_id] = {'status': 'started', 'downloaded_bytes': 0, 'total_bytes': None, 'elapsed': 0}
